@@ -1,3 +1,4 @@
+import Header from '@/components/header';
 import { db } from '@/lib/db';
 import { auth } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
@@ -27,7 +28,7 @@ const StoreIdLayout: FC<StoreIdLayoutProps> = async ({ children, params }) => {
   }
   return (
     <>
-      <div>dashboard</div>
+      <Header />
       {children}
     </>
   );
