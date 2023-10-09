@@ -76,11 +76,11 @@ const BillboardForm: FC<BillboardFormProps> = ({ initialData }) => {
   const onDelete = async () => {
     try {
       await axios.delete(
-        `/api/stores/${params.storeId}/billboards/${params.billboardId}`,
+        `/api/${params.storeId}/billboards/${params.billboardId}`,
       );
       refresh();
+      push(`/${params.storeId}/billboards`);
       toast.success('Billboard deleted.');
-      push('/');
     } catch (error) {
       toast.error('Something went wrong.');
     } finally {
@@ -157,7 +157,6 @@ const BillboardForm: FC<BillboardFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   );
 };

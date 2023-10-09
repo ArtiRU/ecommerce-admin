@@ -1,4 +1,4 @@
-import BillboardForm from '@/app/(dashboard)/[storeId]/(routes)/billboards/component/billboard-form';
+import BillboardForm from '@/app/(dashboard)/[storeId]/(routes)/billboards/[billboardId]/component/billboard-form';
 import { db } from '@/lib/db';
 import { FC } from 'react';
 

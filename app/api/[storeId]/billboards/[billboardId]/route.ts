@@ -102,10 +102,6 @@ export async function DELETE(
       });
     }
 
-    if (!params.storeId) {
-      return new NextResponse('Params "storeId" is required', { status: 400 });
-    }
-
     const storeByUserId = await db.store.findFirst({
       where: {
         id: params.storeId,
@@ -117,7 +113,7 @@ export async function DELETE(
       return new NextResponse('Unauthorized', { status: 403 });
     }
 
-    const billboard = await db.store.deleteMany({
+    const billboard = await db.billboard.delete({
       where: {
         id: params.billboardId,
       },
