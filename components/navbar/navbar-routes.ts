@@ -9,6 +9,10 @@ export const menuRoutes = [
     label: 'Settings',
   },
   {
+    href: 'billboards',
+    label: 'Billboards',
+  },
+  {
     href: '',
     label: 'Overview',
   },
