@@ -27,7 +27,7 @@ model Billboard {
   imageUrl String
 
   store      Store      @relation("StoreToBillboard", fields: [storeId], references: [id])
-  categories Category[] @relation("CategoryToBillboard")
+  categories Category[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -42,7 +42,7 @@ model Category {
   billboardId String
 
   store     Store     @relation("StoreToCategory", fields: [storeId], references: [id])
-  billboard Billboard @relation("CategoryToBillboard", fields: [billboardId], references: [id])
+  billboard Billboard @relation(fields: [billboardId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

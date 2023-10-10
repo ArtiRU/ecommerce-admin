@@ -13,6 +13,10 @@ export const menuRoutes = [
     label: 'Billboards',
   },
   {
+    href: 'categories',
+    label: 'Categories',
+  },
+  {
     href: '',
     label: 'Overview',
   },
