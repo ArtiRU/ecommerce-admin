@@ -17,6 +17,10 @@ export const menuRoutes = [
     label: 'Categories',
   },
   {
+    href: 'sizes',
+    label: 'Sizes',
+  },
+  {
     href: '',
     label: 'Overview',
   },

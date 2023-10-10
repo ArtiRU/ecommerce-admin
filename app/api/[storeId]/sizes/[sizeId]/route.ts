@@ -4,31 +4,31 @@ import { NextResponse } from 'next/server';
 
 export async function GET(
   req: Request,
-  { params }: { params: { billboardId: string } },
+  { params }: { params: { sizeId: string } },
 ) {
   try {
-    if (!params.billboardId) {
-      return new NextResponse('Params "billboardId" is required', {
+    if (!params.sizeId) {
+      return new NextResponse('Params "sizeId" is required', {
         status: 400,
       });
     }
 
-    const billboard = await db.billboard.findUnique({
+    const size = await db.size.findUnique({
       where: {
-        id: params.billboardId,
+        id: params.sizeId,
       },
     });
 
-    return NextResponse.json(billboard);
+    return NextResponse.json(size);
   } catch (error) {
-    console.log('GET BILLBOARD', error);
+    console.log('GET SIZE', error);
     return new NextResponse('Internal error', { status: 500 });
   }
 }
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { billboardId: string; storeId: string } },
+  { params }: { params: { sizeId: string; storeId: string } },
 ) {
   try {
     const { userId } = auth();
@@ -37,22 +37,22 @@ export async function PATCH(
       return new NextResponse('Unauthorized', { status: 401 });
     }
 
-    const { imageUrl, label } = await req.json();
+    const { name, value } = await req.json();
 
-    if (!label) {
-      return new NextResponse('Field "label" is required', { status: 400 });
+    if (!name) {
+      return new NextResponse('Field "name" is required', { status: 400 });
     }
 
-    if (!imageUrl) {
-      return new NextResponse('Field "imageUrl" is required', { status: 400 });
+    if (!value) {
+      return new NextResponse('Field "value" is required', { status: 400 });
     }
 
     if (!params.storeId) {
       return new NextResponse('Params "storeId" is required', { status: 400 });
     }
 
-    if (!params.billboardId) {
-      return new NextResponse('Params "billboardId" is required', {
+    if (!params.sizeId) {
+      return new NextResponse('Params "sizeId" is required', {
         status: 400,
       });
     }
@@ -68,26 +68,26 @@ export async function PATCH(
       return new NextResponse('Unauthorized', { status: 403 });
     }
 
-    const billboard = await db.billboard.updateMany({
+    const size = await db.size.updateMany({
       data: {
-        imageUrl,
-        label,
+        name,
+        value,
       },
       where: {
-        id: params.billboardId,
+        id: params.sizeId,
       },
     });
 
-    return NextResponse.json(billboard);
+    return NextResponse.json(size);
   } catch (error) {
-    console.log('PATCH BILLBOARD', error);
+    console.log('PATCH SIZE', error);
     return new NextResponse('Internal error', { status: 500 });
   }
 }
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { billboardId: string; storeId: string } },
+  { params }: { params: { sizeId: string; storeId: string } },
 ) {
   try {
     const { userId } = auth();
@@ -96,8 +96,8 @@ export async function DELETE(
       return new NextResponse('Unauthorized', { status: 401 });
     }
 
-    if (!params.billboardId) {
-      return new NextResponse('Params "billboardId" is required', {
+    if (!params.sizeId) {
+      return new NextResponse('Params "sizeId" is required', {
         status: 400,
       });
     }
@@ -113,15 +113,15 @@ export async function DELETE(
       return new NextResponse('Unauthorized', { status: 403 });
     }
 
-    const billboard = await db.billboard.delete({
+    const size = await db.size.delete({
       where: {
-        id: params.billboardId,
+        id: params.sizeId,
       },
     });
 
-    return NextResponse.json(billboard);
+    return NextResponse.json(size);
   } catch (error) {
-    console.log('DELETE BILLBOARD', error);
+    console.log('DELETE SIZE', error);
     return new NextResponse('Internal error', { status: 500 });
   }
 }
