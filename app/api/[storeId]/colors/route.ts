@@ -38,7 +38,7 @@ export async function POST(
       return new NextResponse('Unauthorized', { status: 403 });
     }
 
-    const size = await db.size.create({
+    const color = await db.color.create({
       data: {
         name,
         storeId: params.storeId,
@@ -46,9 +46,9 @@ export async function POST(
       },
     });
 
-    return NextResponse.json(size);
+    return NextResponse.json(color);
   } catch (error) {
-    console.log('CREATE SIZE ERROR', error);
+    console.log('CREATE COLOR ERROR', error);
     return new NextResponse('Internal Error', { status: 500 });
   }
 }
@@ -62,15 +62,15 @@ export async function GET(
       return new NextResponse('Field "storeId" is required', { status: 400 });
     }
 
-    const sizes = await db.size.findMany({
+    const colors = await db.color.findMany({
       where: {
         storeId: params.storeId,
       },
     });
 
-    return NextResponse.json(sizes);
+    return NextResponse.json(colors);
   } catch (error) {
-    console.log('GET SIZE ERROR', error);
+    console.log('GET COLOR ERROR', error);
     return new NextResponse('Internal Error', { status: 500 });
   }
 }

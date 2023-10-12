@@ -21,6 +21,10 @@ export const menuRoutes = [
     label: 'Sizes',
   },
   {
+    href: 'colors',
+    label: 'Colors',
+  },
+  {
     href: '',
     label: 'Overview',
   },
