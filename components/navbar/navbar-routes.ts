@@ -25,6 +25,10 @@ export const menuRoutes = [
     label: 'Colors',
   },
   {
+    href: 'products',
+    label: 'Products',
+  },
+  {
     href: '',
     label: 'Overview',
   },
