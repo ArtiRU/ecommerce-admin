@@ -14,12 +14,12 @@ export async function GET(
     }
 
     const category = await db.category.findUnique({
+      include: {
+        billboard: true,
+      },
       where: {
         id: params.categoryId,
       },
-      include: {
-        billboard: true,
-      }
     });
 
     return NextResponse.json(category);
