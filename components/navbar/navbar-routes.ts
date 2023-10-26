@@ -29,6 +29,10 @@ export const menuRoutes = [
     label: 'Products',
   },
   {
+    href: 'orders',
+    label: 'Orders',
+  },
+  {
     href: '',
     label: 'Overview',
   },
